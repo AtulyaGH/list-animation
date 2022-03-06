@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    background-color: blueviolet;
+}
+.list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1;
+    position: relative;
+    min-height: 100vh;
+    user-select: none;
+}
+.list-item{
+    font-size: 6rem;
+    font-weight: bolder;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.main-text .list-item{
+    color: black;    
+    transition: color 0ms 500ms;
+}
+.main-text:hover .list-item{
+    color: transparent;
+    transition: color 0ms;
+}
+.main-text .list-item::after, 
+.main-text .list-item::before{
+    content: attr(data-text);
+    position: absolute;
+    height: calc(.5em);
+    overflow: hidden;
+    display: flex; 
+    color: black;
+    transition: all 500ms ease-in-out;
+}
+.main-text:hover .list-item::after,
+.main-text:hover .list-item::before{
+    transform: skewX(20deg);
+    color: red;
+    text-shadow: 2px 2px 2px black;
+}
+.main-text .list-item::after{
+    align-items: flex-end;
+    bottom: 0;
+}
+.main-text{
+    position: relative;
+}
+.main-text::before{
+    transition: transform 500ms ease-in-out, color 500ms ease-in-out;
+    content:"";
+    width: 110%;
+    height: 5px;
+    left: -5%;
+    background-color: transparent;
+    position: absolute;
+    z-index: 100;
+    border-radius: 20px;
+    top: calc(50% - 2.5px);
+    transform: scale(0);
+    transition: transform 500ms ease-in-out;
+    background-color: black;
+}
+.main-text:hover::before{
+    transform: scaleX(1);
+}
